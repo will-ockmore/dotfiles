@@ -61,3 +61,5 @@
 - VLC
 
         sudo apt-get install vlc
+
+- Lastpass
