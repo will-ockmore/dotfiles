@@ -60,4 +60,4 @@
         
 - VLC
 
-        sudo apt-get install spotify
+        sudo apt-get install vlc
