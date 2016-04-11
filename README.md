@@ -27,6 +27,7 @@
     - atom-bootstrap3
     - autocomplete-paths
     - color-picker
+    - expand-region
     - css-edit-groups
     - file-icons
     - git-projects
