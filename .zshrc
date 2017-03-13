@@ -132,17 +132,17 @@ bktoext () {
     --out $@/data-dumps/tweets2-`date "+%Y-%m-%d"` \
 
   # Backup home directory folders
-  rsync -azvh /Users/will/Documents $@/Backups/Documents
-  rsync -azvh /Users/will/Pictures $@/Backups/Pictures
-  rsync -azvh /Users/will/Projects/haskell $@/Backups/Projects/haskell
-  rsync -azvh /Users/will/Projects/node $@/Backups/Projects/node
-  rsync -azvh /Users/will/Projects/personal-projects $@/Backups/Projects/personal-projects
-  rsync -azvh /Users/will/Projects/python-scripts $@/Backups/Projects/python-scripts
-  rsync -azvh /Users/will/Projects/tutorials $@/Backups/Projects/tutorials
+  rsync -azvh /Users/will/Documents $@/Backups
+  rsync -azvh /Users/will/Pictures $@/Backups
+  rsync -azvh /Users/will/Projects/haskell $@/Backups/Projects
+  rsync -azvh /Users/will/Projects/node $@/Backups/Projects
+  rsync -azvh /Users/will/Projects/personal-projects $@/Backups/Projects
+  rsync -azvh /Users/will/Projects/python-scripts $@/Backups/Projects
+  rsync -azvh /Users/will/Projects/tutorials $@/Backups/Projects
 
   # Sync dotfiles
   bkdotfiles
-  rsync -azvh /Users/will/Projects/dotfiles $@/Backups/Projects/dotfiles
+  rsync -azvh /Users/will/Projects/dotfiles $@/Backups/Projects
   rsync -azvh ~/.ssh/* /Volumes/Maxtor\ External\ HDD/Backups/ssh
 }
 
