@@ -132,18 +132,18 @@ bktoext () {
     --out $@/data-dumps/tweets2-`date "+%Y-%m-%d"` \
 
   # Backup home directory folders
-  rsync -azh --stats /Users/will/Documents $@/Backups
-  rsync -azh --stats /Users/will/Pictures $@/Backups
-  rsync -azh --stats /Users/will/Projects/haskell $@/Backups/Projects
-  rsync -azh --stats /Users/will/Projects/node $@/Backups/Projects
-  rsync -azh --stats /Users/will/Projects/personal-projects $@/Backups/Projects
-  rsync -azh --stats /Users/will/Projects/python-scripts $@/Backups/Projects
-  rsync -azh --stats /Users/will/Projects/tutorials $@/Backups/Projects
+  rsync -azh --stats ~/Documents $@/Backups
+  rsync -azh --stats ~/Pictures $@/Backups
+  rsync -azh --stats ~/Projects/haskell $@/Backups/Projects
+  rsync -azh --stats ~/Projects/node $@/Backups/Projects
+  rsync -azh --stats ~/Projects/personal-projects $@/Backups/Projects
+  rsync -azh --stats ~/Projects/python-scripts $@/Backups/Projects
+  rsync -azh --stats ~/Projects/tutorials $@/Backups/Projects
 
   # Sync dotfiles
   bkdotfiles
-  rsync -azh --stats /Users/will/Projects/dotfiles $@/Backups/Projects
-  rsync -azh --stats ~/.ssh/* /Volumes/Maxtor\ External\ HDD/Backups/ssh
+  rsync -azh --stats ~/Projects/dotfiles $@/Backups/Projects
+  rsync -azh --stats ~/.ssh/* $@/Backups/ssh
 }
 
 
