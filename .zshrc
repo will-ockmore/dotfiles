@@ -125,10 +125,9 @@ bkdotfiles() {
 
 bktoext () {
 
-
   # Sync dotfiles
   bkdotfiles
-  rsync -azvh ~/Projects/dotfiles $@/Backups/Projects &&
+  rsync -azvh ~/Projects/dotfiles $@/Backups/Projects
   rsync -azvh ~/.ssh/* $@/Backups/ssh
 }
 
