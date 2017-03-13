@@ -116,19 +116,11 @@ renamealljpg() {
 
 bkdotfiles() {
   cp -r ~/.{zshrc,bash_history,bash_profile,dotfiles} ~/Projects/dotfiles
-  echo 'copied'
   cd ~/Projects/dotfiles
-  ls -a
-  git status
   git add .
-  echo 'added to git'
-  git status
   git commit -m 'Backup dotfiles on `date %F`'
-  echo 'committed'
   git push
 }
-
-# hello
 
 bktoext () {
   # Backup tweets database from droplet
@@ -148,11 +140,10 @@ bktoext () {
   sudo rsync -azvh /Users/will/Projects/python-scripts $@/Backups/Projects/python-scripts
   sudo rsync -azvh /Users/will/Projects/tutorials $@/Backups/Projects/tutorials
 
-  # Sync dotfiles, commit and backup
-  cp ~/.{zshrc,bash_history,bash_profile,dotfiles} ~/Projects/dotfiles
+  # Sync dotfiles
+  bkdotfiles
   sudo rsync -azvh /Users/will/Projects/dotfiles $@/Backups/Projects/dotfiles
   sudo rsync -azvh ~/.ssh/* /Volumes/Maxtor\ External\ HDD/Backups/ssh
-
 }
 
 
