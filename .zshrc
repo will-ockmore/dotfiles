@@ -124,27 +124,12 @@ bkdotfiles() {
 }
 
 bktoext () {
-  # Backup tweets database from droplet
-  mongodump --host 67.205.133.245 \
-    --port $DOKKU_TWEET_SERVER_PORT \
-    --db tweets-2 \
-    --username tweets-2 \
-    --password $DOKKU_TWEET_SERVER_PASS \
-    --out $@/data-dumps/tweets2-`date "+%Y-%m-%d"` \
 
-  # Backup home directory folders
-  rsync -azh --stats ~/Documents $@/Backups
-  rsync -azh --stats ~/Pictures $@/Backups
-  rsync -azh --stats ~/Projects/haskell $@/Backups/Projects
-  rsync -azh --stats ~/Projects/node $@/Backups/Projects
-  rsync -azh --stats ~/Projects/personal-projects $@/Backups/Projects
-  rsync -azh --stats ~/Projects/python-scripts $@/Backups/Projects
-  rsync -azh --stats ~/Projects/tutorials $@/Backups/Projects
 
   # Sync dotfiles
   bkdotfiles
-  rsync -azh --stats ~/Projects/dotfiles $@/Backups/Projects
-  rsync -azh --stats ~/.ssh/* $@/Backups/ssh
+  rsync -azvh ~/Projects/dotfiles $@/Backups/Projects &&
+  rsync -azvh ~/.ssh/* $@/Backups/ssh
 }
 
 
