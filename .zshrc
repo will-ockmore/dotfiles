@@ -118,7 +118,7 @@ bkdotfiles() {
   cp -r ~/.{zshrc,bash_history,bash_profile,dotfiles} ~/Projects/dotfiles
   cd ~/Projects/dotfiles
   git add .
-  git commit -m 'Backup dotfiles on `date %F`'
+  git commit -m 'Backup dotfiles'
   git push
 }
 
@@ -129,7 +129,7 @@ bktoext () {
     --db tweets-2 \
     --username tweets-2 \
     --password 9af4a73a6fb590fbb657d1dc0a24b2ba \
-    --out $@/data-dumps/tweets2-`date %F` \
+    --out $@/data-dumps/tweets2-`date "+%Y-%m-%d"` \
 
   # Backup home directory folders
   sudo rsync -azvh /Users/will/Documents $@/Backups/Documents
