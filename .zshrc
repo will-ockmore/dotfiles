@@ -36,13 +36,17 @@ ZSH_THEME="bureau"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(zsh-autosuggestions git)
+
+# Enable extended globbing eg. negation patterns
+setopt extended_glob
 
 
 # Exports - User configuration
 
 export PATH=${PATH}:~/usr/local/bin
 export PATH=${PATH}:~/usr/local/bin/mysql
+export PATH=$HOME/.local/bin:$PATH
 export PATH=${PATH}:/Applications/MAMP/Library/bin/mysql
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
 
@@ -69,6 +73,10 @@ alias nt="npm test"
 alias nu="nvm use"
 alias nvmc="nvm current"
 
+# test command for django projects (catfish - uses runtests)
+alias ctest="NO_MIGRATIONS=true ctf project run -- runtests --keepdb"
+alias ct="IN_TEST=true FILE_STORAGE='django.core.files.storage.FileSystemStorage' ctf project run manage.py -- test --keepdb"
+
 ctp() {
   if [[ $@ == "start" ]]; then
       command ctf project start
@@ -88,34 +96,62 @@ ctp() {
       command ctf project run -- python manage.py shell
   elif [[ $@ == "migrate" ]]; then
       command ctf project run -- python manage.py migrate
+  elif [[ $@ == "test" ]]; then
+      command ctf project run -- runtests --keepdb
   else
       command ctf project "$@"
   fi
 }
 
-# Scripts - split by project
+# General Scripts
 
-# iComply
-#
-
-icomply() {
-  # Set up new copy of database
-  if [[ $@ == "recreate" ]]; then
-    echo "Recreating database"
-    dropdb icomply
-    createdb icomply
-    echo "Running migrations and migration scripts"
-    ctf project run manage.py migrate &&
-    ctf project run manage.py migrate_data mysql://root:root@localhost/icomply_dev &&
-    ctf project run manage.py interpret_groups &&
-    ctf project run manage.py migrate_set_up_stages &&
-    ctf project run manage.py migrate_todo_deadlines &&
-    echo "Create super user" &&
-    ctf project run manage.py createsuperuser
-  fi
+renamealljpg() {
+  a=1
+  for i in *.png; do
+    new=$(printf "png_%02d.png" "$a") #04 pad to length of 2
+    mv -- "$i" "$new"
+    let a=a+1
+  done
 }
 
+bkdotfiles() {
+  cp -r ~/.{zshrc,bash_history,bash_profile,dotfiles} ~/Projects/dotfiles
+  echo 'copied'
+  cd ~/Projects/dotfiles
+  ls -a
+  git status
+  git add .
+  echo 'added to git'
+  git status
+  git commit -m 'Backup dotfiles on `date %F`'
+  echo 'committed'
+  git push
+}
 
+bktoext () {
+  # Backup tweets database from droplet
+  mongodump --host 67.205.133.245 \
+    --port 18681 \
+    --db tweets-2 \
+    --username tweets-2 \
+    --password 9af4a73a6fb590fbb657d1dc0a24b2ba \
+    --out $@/data-dumps/tweets2-`date %F` \
+
+  # Backup home directory folders
+  sudo rsync -azvh /Users/will/Documents $@/Backups/Documents
+  sudo rsync -azvh /Users/will/Pictures $@/Backups/Pictures
+  sudo rsync -azvh /Users/will/Projects/haskell $@/Backups/Projects/haskell
+  sudo rsync -azvh /Users/will/Projects/node $@/Backups/Projects/node
+  sudo rsync -azvh /Users/will/Projects/personal-projects $@/Backups/Projects/personal-projects
+  sudo rsync -azvh /Users/will/Projects/python-scripts $@/Backups/Projects/python-scripts
+  sudo rsync -azvh /Users/will/Projects/tutorials $@/Backups/Projects/tutorials
+
+  # Sync dotfiles, commit and backup
+  cp ~/.{zshrc,bash_history,bash_profile,dotfiles} ~/Projects/dotfiles
+  sudo rsync -azvh /Users/will/Projects/dotfiles $@/Backups/Projects/dotfiles
+  sudo rsync -azvh ~/.ssh/* /Volumes/Maxtor\ External\ HDD/Backups/ssh
+
+}
 
 
 # GitHub Personal Token (Mostly - Catfish)

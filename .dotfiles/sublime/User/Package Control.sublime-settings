@@ -1,0 +1,31 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"All Autocomplete",
+		"AutoFileName",
+		"Babel",
+		"Babel Snippets",
+		"Boxy Theme",
+		"ColorPicker",
+		"Colorsublime",
+		"CSSEdit Group support",
+		"Git",
+		"GitGutter",
+		"LESS",
+		"Origami",
+		"Package Control",
+		"Sass",
+		"SublimeLinter",
+		"SublimeLinter-contrib-eslint",
+		"SublimeLinter-flake8",
+		"SummitLinter",
+		"Terminal",
+		"TodoReview",
+		"TypeScript",
+		"VAlign"
+	]
+}
