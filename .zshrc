@@ -60,6 +60,7 @@ export REACT_EDITOR="subl" # Add sublime to REACT_EDITOR for scriptin
 # Exports - User configuration
 
 source $ZSH/oh-my-zsh.sh
+source ~/.private-environment-variables
 
 
 # Aliases
@@ -125,10 +126,10 @@ bkdotfiles() {
 bktoext () {
   # Backup tweets database from droplet
   mongodump --host 67.205.133.245 \
-    --port 18681 \
+    --port $DOKKU_TWEET_SERVER_PORT \
     --db tweets-2 \
     --username tweets-2 \
-    --password 9af4a73a6fb590fbb657d1dc0a24b2ba \
+    --password $DOKKU_TWEET_SERVER_PASS \
     --out $@/data-dumps/tweets2-`date "+%Y-%m-%d"` \
 
   # Backup home directory folders
