@@ -116,6 +116,7 @@ renamealljpg() {
 }
 
 bkdotfiles() {
+  echo 'backing up dotfiles...'
   cp -r ~/.{zshrc,bash_history,bash_profile,dotfiles} ~/Projects/dotfiles
   cd ~/Projects/dotfiles
   git add .
@@ -125,7 +126,7 @@ bkdotfiles() {
 
 bktoext () {
   # Backup tweets database from droplet
-  mongodump --host 67.205.133.245 \
+  mongodump --host $DOKKU_TWEET_SERVER_ADDR \
     --port $DOKKU_TWEET_SERVER_PORT \
     --db tweets-2 \
     --username tweets-2 \
@@ -133,6 +134,7 @@ bktoext () {
     --out $@/data-dumps/tweets2-`date "+%Y-%m-%d"` \
 
   # Backup home directory folders
+  echo 'backing up documents, pictures and projects...'
   rsync -azh ~/Documents $@/Backups
   rsync -azh ~/Pictures $@/Backups
   rsync -azh ~/Projects/haskell $@/Backups/Projects
