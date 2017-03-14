@@ -57,97 +57,16 @@ export ANDROID_NDK=/usr/local/opt/android-ndk
 export REACT_EDITOR="subl" # Add sublime to REACT_EDITOR for scriptin
 
 
-# Exports - User configuration
+# Custom configuration
+# All commands and aliases are stored separately in the .dotfiles folder
 
 source $ZSH/oh-my-zsh.sh
+
 source ~/.private-environment-variables
-
-
-# Aliases
-
-alias enva="source env/bin/activate"
-
-alias ni="npm install"
-alias ns="npm start"
-alias nt="npm test"
-
-alias nu="nvm use"
-alias nvmc="nvm current"
-
-# test command for django projects (catfish - uses runtests)
-alias ctest="NO_MIGRATIONS=true ctf project run -- runtests --keepdb"
-alias ct="IN_TEST=true FILE_STORAGE='django.core.files.storage.FileSystemStorage' ctf project run manage.py -- test --keepdb"
-
-ctp() {
-  if [[ $@ == "start" ]]; then
-      command ctf project start
-  elif [[ $@ == "stop" ]]; then
-      command ctf project stop
-  elif [[ $@ == "restart" ]]; then
-      command ctf project restart
-  elif [[ $@ == "status" ]]; then
-      command ctf project status
-  elif [[ $@ == "stop" ]]; then
-      command ctf project stop
-  elif [[ $@ == "logs" ]]; then
-      command ctf project logs
-  elif [[ $@ == "what" ]]; then
-      ctp stop && ctp start & ctp logs
-  elif [[ $@ == "shell" ]]; then
-      command ctf project run -- python manage.py shell
-  elif [[ $@ == "migrate" ]]; then
-      command ctf project run -- python manage.py migrate
-  elif [[ $@ == "test" ]]; then
-      command ctf project run -- runtests --keepdb
-  else
-      command ctf project "$@"
-  fi
-}
-
-# General Scripts
-
-renamealljpg() {
-  a=1
-  for i in *.png; do
-    new=$(printf "png_%02d.png" "$a") #04 pad to length of 2
-    mv -- "$i" "$new"
-    let a=a+1
-  done
-}
-
-bkdotfiles() {
-  echo 'backing up dotfiles...'
-  cp -r ~/.{zshrc,bash_history,bash_profile,dotfiles} ~/Projects/dotfiles
-  cd ~/Projects/dotfiles
-  git add .
-  git commit -m 'Backup dotfiles'
-  git push
-}
-
-bktoext () {
-  # Backup tweets database from droplet
-  mongodump --host $DOKKU_TWEET_SERVER_ADDR \
-    --port $DOKKU_TWEET_SERVER_PORT \
-    --db tweets-2 \
-    --username tweets-2 \
-    --password $DOKKU_TWEET_SERVER_PASS \
-    --out $@/data-dumps/tweets2-`date "+%Y-%m-%d"` \
-
-  # Backup home directory folders
-  echo 'backing up documents, pictures and projects...'
-  rsync -azh ~/Documents $@/Backups
-  rsync -azh ~/Pictures $@/Backups
-  rsync -azh ~/Projects/haskell $@/Backups/Projects
-  rsync -azh ~/Projects/node $@/Backups/Projects
-  rsync -azh ~/Projects/personal-projects $@/Backups/Projects
-  rsync -azh ~/Projects/python-scripts $@/Backups/Projects
-  rsync -azh ~/Projects/tutorials $@/Backups/Projects
-
-  # Sync dotfiles
-  bkdotfiles
-  rsync -azh ~/Projects/dotfiles $@/Backups/Projects
-  rsync -azh ~/.ssh/* $@/Backups/ssh
-}
+source ~/.dotfiles/backup-commands.sh
+source ~/.dotfiles/catfish-commands.sh
+source ~/.dotfiles/misc-commands.sh
+source ~/.dotfiles/aliases.sh
 
 
 # GitHub Personal Token (Mostly - Catfish)
@@ -155,6 +74,5 @@ bktoext () {
 if [ -f ~/.github_token ]; then
     export GITHUB_TOKEN=`cat ~/.github_token`
 fi
-
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
