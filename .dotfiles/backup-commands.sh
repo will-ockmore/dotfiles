@@ -1,6 +1,6 @@
 bkdotfiles() {
   echo 'backing up dotfiles...'
-  cp -r ~/.{zshrc,bash_history,bash_profile,dotfiles} ~/Projects/dotfiles
+  cp -r ~/.{zshrc,bash_profile,dotfiles} ~/Projects/dotfiles
   cd ~/Projects/dotfiles
   git add .
   git commit -m 'Backup dotfiles'
@@ -30,4 +30,5 @@ bktoext () {
   bkdotfiles
   rsync -azh ~/Projects/dotfiles $@/Backups/Projects
   rsync -azh ~/.ssh/* $@/Backups/ssh
+  rsync -azh ~/.zsh_history $@/Backups/shell-history
 }
