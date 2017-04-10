@@ -30,5 +30,5 @@ bktoext () {
   bkdotfiles
   rsync -azh ~/Projects/dotfiles $@/Backups/Projects
   rsync -azh ~/.ssh/* $@/Backups/ssh
-  rsync -azh ~/.zsh_history $@/Backups/shell-history
+  rsync -azh ~/.zsh_history $@/Backups/.zsh_history
 }
