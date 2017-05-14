@@ -41,6 +41,9 @@ plugins=(zsh-autosuggestions git)
 # Enable extended globbing eg. negation patterns
 setopt extended_glob
 
+# don't require explicitly matching a leading . in filenames
+setopt glob_dots
+
 
 # Exports - User configuration
 
