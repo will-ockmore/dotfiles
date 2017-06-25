@@ -18,7 +18,7 @@
                 "builtins": "",
                 "excludes": [],
                 "executable": "",
-                "ignore": "E128,E501",
+                "ignore": "E501,E128",
                 "jobs": "1",
                 "max-complexity": -1,
                 "max-line-length": null,
@@ -33,6 +33,14 @@
                 "ignore": "channel",
                 "limit": null,
                 "only": ""
+            },
+            "tslint": {
+                "@disable": false,
+                "args": [],
+                "config_filename": "tslint.json",
+                "excludes": [
+                    "**/node_modules/**"
+                ]
             }
         },
         "mark_style": "outline",
@@ -40,9 +48,7 @@
         "passive_warnings": false,
         "paths": {
             "linux": [],
-            "osx": [
-                "/Users/will/.nvm/versions/node/v5.12.0/bin/node"
-            ],
+            "osx": [],
             "windows": []
         },
         "python_paths": {
@@ -64,6 +70,10 @@
             "python django": "python",
             "pythonimproved": "python"
         },
+        "tooltip_fontsize": "1rem",
+        "tooltip_theme": "Packages/SublimeLinter/tooltip-themes/Default/Default.tooltip-theme",
+        "tooltip_theme_excludes": [],
+        "tooltips": false,
         "warning_color": "FAC863",
         "wrap_find": true
     }

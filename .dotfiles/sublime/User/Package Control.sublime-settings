@@ -23,6 +23,7 @@
 		"Sass",
 		"SublimeLinter",
 		"SublimeLinter-contrib-eslint",
+		"SublimeLinter-contrib-tslint",
 		"SublimeLinter-flake8",
 		"SummitLinter",
 		"Terminal",

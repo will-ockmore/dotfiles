@@ -1,3 +1,5 @@
+export CATFISH_HOSTNAME_OVERRIDE="localhost"
+
 # test command for django projects (catfish - uses runtests)
 alias ctest="NO_MIGRATIONS=true ctf project run -- runtests --keepdb"
 alias ct="IN_TEST=true FILE_STORAGE='django.core.files.storage.FileSystemStorage' ctf project run manage.py -- test --keepdb"

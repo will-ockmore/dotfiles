@@ -20,6 +20,7 @@ bktoext () {
   echo 'backing up documents, pictures and projects...'
   rsync -azh ~/Documents $@/Backups
   rsync -azh ~/Pictures $@/Backups
+  rsync -azh /Library/Audio/Plug-Ins $@/Backups/audio-plug-ins
   rsync -azh ~/Projects/haskell $@/Backups/Projects
   rsync -azh ~/Projects/node $@/Backups/Projects
   rsync -azh ~/Projects/personal-projects $@/Backups/Projects
