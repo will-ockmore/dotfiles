@@ -12,3 +12,13 @@ renamealljpg() {
 encodemessage() {
   echo "openssl enc -base64 -d -A <<< `openssl enc -base64 <<< $@` | say"
 }
+
+printargs() {
+  echo "$@"
+
+  cnt=1
+  for arg in "$@"; do
+    echo "Argument $cnt: $arg"
+    let "cnt+=1"
+  done
+}

@@ -1,0 +1,15 @@
+# see https://gist.github.com/weargoggles/bde6c470bf9dd2e8ce6faccd81a9efaa for pete's
+
+[user]
+  name = Will Ockmore
+  email = will.ockmore@gmail.com
+[push]
+  default = simple
+
+[fetch]
+  prune = true
+
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true

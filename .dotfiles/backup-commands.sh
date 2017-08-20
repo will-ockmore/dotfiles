@@ -1,6 +1,6 @@
 bkdotfiles() {
   echo 'backing up dotfiles...'
-  cp -r ~/.{zshrc,bash_profile,dotfiles} ~/Projects/dotfiles
+  cp -r ~/.{zshrc,bash_profile,dotfiles,gitconfig} ~/Projects/dotfiles
   cd ~/Projects/dotfiles
   git add .
   git commit -m 'Backup dotfiles'
