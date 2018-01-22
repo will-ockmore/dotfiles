@@ -28,7 +28,7 @@
 	"color_scheme": "Packages/Boxy Theme/schemes/Boxy Tomorrow.tmTheme",
 	"ensure_newline_at_eof_on_save": true,
 	"font_face": "Inconsolata",
-	"font_size": 14,
+	"font_size": 12,
 	"highlight_line": true,
 	"ignored_packages":
 	[
@@ -52,7 +52,10 @@
 	"theme_scrollbar_line": true,
 	"theme_scrollbar_semi_overlayed": true,
 	"theme_sidebar_folder_atomized": true,
+	"theme_sidebar_font_xs": true,
+	"theme_sidebar_icon_saturation_xh": true,
 	"theme_sidebar_indent_top_level_disabled": true,
+	"theme_sidebar_size_xs": true,
 	"theme_tab_close_always_visible": true,
 	"theme_tab_line_size_lg": true,
 	"theme_tab_selected_transparent": true,
