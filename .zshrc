@@ -47,19 +47,6 @@ setopt glob_dots
 
 # Exports - User configuration
 
-export PATH=${PATH}:~/usr/local/bin
-export PATH=${PATH}:~/usr/local/bin/mysql
-export PATH=$HOME/.local/bin:$PATH
-export PATH=${PATH}:/Applications/MAMP/Library/bin/mysql
-export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
-
-export ANDROID_HOME=/usr/local/opt/android-sdk
-export ANDROID_SDK=/usr/local/opt/android-sdk
-export ANDROID_NDK=/usr/local/opt/android-ndk
-
-export REACT_EDITOR="subl" # Add sublime to REACT_EDITOR for scriptin
-
-
 # Custom configuration
 # All commands and aliases are stored separately in the .dotfiles folder
 
@@ -73,16 +60,7 @@ source ~/.dotfiles/misc-commands.sh
 source ~/.dotfiles/aliases.sh
 source ~/.dotfiles/docker-config.sh
 
-
-# GitHub Personal Token (Mostly - Catfish)
-
-if [ -f ~/.github_token ]; then
-    export GITHUB_TOKEN=`cat ~/.github_token`
-fi
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+export NVM_DIR="/Users/will/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
