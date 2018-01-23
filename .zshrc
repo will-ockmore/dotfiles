@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/will/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 
 DEFAULT_USER="Will"
 
@@ -58,7 +58,7 @@ source ~/.dotfiles/backup-commands.sh
 source ~/.dotfiles/misc-commands.sh
 source ~/.dotfiles/aliases.sh
 
-export NVM_DIR="/Users/will/.nvm"
+export NVM_DIR="~/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
