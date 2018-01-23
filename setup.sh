@@ -2,6 +2,18 @@
 
 set -euo pipefail
 
+get_os() {
+	unameOut="$(uname -s)"
+	case "${unameOut}" in
+	    Linux*)     machine=Linux;;
+	    Darwin*)    machine=Mac;;
+	    CYGWIN*)    machine=Cygwin;;
+	    MINGW*)     machine=MinGw;;
+	    *)          machine="UNKNOWN:${unameOut}"
+	esac
+	echo ${machine}
+}
+
 copy_dotfiles() {
 	# copies over dotfiles and shell configuration
 	rsync -azh ./.dotfiles ~
@@ -64,7 +76,7 @@ setup_nvm() {
 	# pull version 0.33.8 - can be updated
 	git checkout v0.33.8
 
-	source nvm.sh
+	source ./nvm.sh
 
 	# set node version as latest LTS and install
 	echo "lts/*" > ~/.nvmrc
@@ -74,15 +86,25 @@ setup_nvm() {
 }
 
 setup_sublime() {
-	# make it possible to invoke as a command
-	ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
+	OS=$(get_os)
 
-	# symlink from dotfiles
-	rm -rf ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/
-	ln -s ~/.dotfiles/sublime/User/ ~/Library/Application\ Support/Sublime\ Text\ 3/Packages
+	if [ "$OS" == 'Linux' ]; then
+		# symlink from dotfiles
+		rm -rf ~/.config/sublime-text-3/Packages/User/
+		ln -sf ~/.dotfiles/sublime/User/ ~/.config/sublime-text-3/Packages
+	elif [ "$OS" == 'Darwin' ]; then
+		# make it possible to invoke as a command
+		ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
+
+		# symlink from dotfiles
+		rm -rf ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/
+		ln -sf ~/.dotfiles/sublime/User/ ~/Library/Application\ Support/Sublime\ Text\ 3/Packages
+	fi
 }
 
 run_setup() {
+	OS=get_os
+
 	copy_dotfiles
 	install_homebrew
 	setup_ohmyzsh

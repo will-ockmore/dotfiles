@@ -52,8 +52,8 @@
             "windows": []
         },
         "python_paths": {
-            "linux": [],
-            "osx": [],
+            "linux": ["/home/will/.pyenv/versions/3.6.4/bin/"],
+            "osx": ["/Users/will/.pyenv/versions/3.6.4/bin/"],
             "windows": []
         },
         "rc_search_limit": 3,
