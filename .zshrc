@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=~/.oh-my-zsh
+export ZSH="$HOME/.oh-my-zsh"
 
 DEFAULT_USER="Will"
 
@@ -52,13 +52,13 @@ setopt glob_dots
 
 source $ZSH/oh-my-zsh.sh
 
-source ~/.private-environment-variables
-source ~/.dotfiles/pyenv-config.sh
-source ~/.dotfiles/backup-commands.sh
-source ~/.dotfiles/misc-commands.sh
-source ~/.dotfiles/aliases.sh
+source $HOME/.private-environment-variables
+source $HOME/.dotfiles/pyenv-config.sh
+source $HOME/.dotfiles/backup-commands.sh
+source $HOME/.dotfiles/misc-commands.sh
+source $HOME/.dotfiles/aliases.sh
 
-export NVM_DIR="~/.nvm"
+export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
