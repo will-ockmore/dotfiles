@@ -55,10 +55,8 @@ source $ZSH/oh-my-zsh.sh
 source ~/.private-environment-variables
 source ~/.dotfiles/pyenv-config.sh
 source ~/.dotfiles/backup-commands.sh
-source ~/.dotfiles/catfish-commands.sh
 source ~/.dotfiles/misc-commands.sh
 source ~/.dotfiles/aliases.sh
-source ~/.dotfiles/docker-config.sh
 
 export NVM_DIR="/Users/will/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
