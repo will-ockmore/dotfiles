@@ -8,15 +8,11 @@
 		"All Autocomplete",
 		"AutoFileName",
 		"Babel",
-		"Babel Snippets",
 		"Boxy Theme",
-		"ColorPicker",
 		"Colorsublime",
-		"CSSEdit Group support",
 		"Git",
 		"GitGutter",
 		"JsPrettier",
-		"LESS",
 		"Markdown Preview",
 		"Origami",
 		"Package Control",
@@ -26,9 +22,6 @@
 		"SublimeLinter-eslint",
 		"SublimeLinter-flake8",
 		"SummitLinter",
-		"Terminal",
-		"TodoReview",
 		"TypeScript",
-		"VAlign"
 	]
 }
