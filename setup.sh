@@ -60,6 +60,8 @@ setup_ohmyzsh() {
 
 setup_pyenv() {
 	git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+	
+	exec $SHELL
 
 	# install recent as default
 	pyenv install 3.6.4
