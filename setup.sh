@@ -94,7 +94,7 @@ setup_sublime() {
 		# symlink from dotfiles
 		rm -rf ~/.config/sublime-text-3/Packages/User/
 		ln -sf ~/.dotfiles/sublime/User/ ~/.config/sublime-text-3/Packages
-	elif [ "$OS" == 'Darwin' ]; then
+	elif [ "$OS" == 'Mac' ]; then
 		# make it possible to invoke as a command
 		ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
 
