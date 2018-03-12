@@ -103,6 +103,10 @@ setup_sublime() {
 		ln -sf ~/.dotfiles/sublime/User/ ~/Library/Application\ Support/Sublime\ Text\ 3/Packages
 		cp ./node_env.py ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/
 	fi
+
+	# setup for linting
+	npm install typescript tslint
+	pip install flake8
 }
 
 run_setup() {

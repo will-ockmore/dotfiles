@@ -48,13 +48,7 @@ Once that's done, go to the settings for [Sublime Linter](http://www.sublimelint
 echo $(pyenv root)/versions/$(pyenv global)/bin/
 ```
 
-matches the OSX path (as described [here](https://thoughtstreams.io/paltman/getting-sublimelinter-to-work-with-pyenv-and-zsh/)). You'll also need to install the required packages from `pip`:
-
-```bash
-pip install flake8
-```
-
-(may also require `pyflakes pylint`)
+matches the OSX path (as described [here](https://thoughtstreams.io/paltman/getting-sublimelinter-to-work-with-pyenv-and-zsh/)).
 
 Then, run the Boxy configuration and choose the theme.
 
