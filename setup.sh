@@ -60,7 +60,7 @@ setup_ohmyzsh() {
 
 setup_pyenv() {
 	git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-	
+
 	exec $SHELL
 
 	# install recent as default
@@ -101,6 +101,7 @@ setup_sublime() {
 		# symlink from dotfiles
 		rm -rf ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/
 		ln -sf ~/.dotfiles/sublime/User/ ~/Library/Application\ Support/Sublime\ Text\ 3/Packages
+		cp ./node_env.py ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/
 	fi
 }
 
