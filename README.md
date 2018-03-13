@@ -54,7 +54,12 @@ Then, run the Boxy configuration and choose the theme.
 
 Finally, install [Inconsolata](https://www.fontsquirrel.com/fonts/inconsolata).
 
-TODO: add section about ITerm preferences / color scheme
+### Iterm Preferences and color schemes
+
+- Download color schemes from [here](http://iterm2colorschemes.com/).
+- Set system wide hotkey.
+- Make new tabs keep current working directory.
+- [Set navigation keys](https://coderwall.com/p/h6yfda/use-and-to-jump-forwards-backwards-words-in-iterm-2-on-os-x)
 
 ## Setup for linux:
 
