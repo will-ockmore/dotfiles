@@ -61,6 +61,8 @@ setup_ohmyzsh() {
 setup_pyenv() {
 	git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 
+	exec $SHELL
+
 	# install recent as default
 	pyenv install 3.6.4
 	pyenv global 3.6.4
@@ -92,14 +94,19 @@ setup_sublime() {
 		# symlink from dotfiles
 		rm -rf ~/.config/sublime-text-3/Packages/User/
 		ln -sf ~/.dotfiles/sublime/User/ ~/.config/sublime-text-3/Packages
-	elif [ "$OS" == 'Darwin' ]; then
+	elif [ "$OS" == 'Mac' ]; then
 		# make it possible to invoke as a command
 		ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl
 
 		# symlink from dotfiles
 		rm -rf ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/
 		ln -sf ~/.dotfiles/sublime/User/ ~/Library/Application\ Support/Sublime\ Text\ 3/Packages
+		cp ./node_env.py ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/
 	fi
+
+	# setup for linting
+	npm install typescript tslint
+	pip install flake8
 }
 
 run_setup() {
