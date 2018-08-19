@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+export ZSH=/Users/will/.oh-my-zsh
 
 DEFAULT_USER="Will"
 
@@ -36,7 +36,7 @@ ZSH_THEME="bureau"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-autosuggestions git)
+plugins=(git)
 
 # Enable extended globbing eg. negation patterns
 setopt extended_glob
@@ -44,21 +44,36 @@ setopt extended_glob
 # don't require explicitly matching a leading . in filenames
 setopt glob_dots
 
-
-# Exports - User configuration
-
 # Custom configuration
 # All commands and aliases are stored separately in the .dotfiles folder
 
 source $ZSH/oh-my-zsh.sh
 
-source $HOME/.private-environment-variables
-source $HOME/.dotfiles/pyenv-config.sh
-source $HOME/.dotfiles/backup-commands.sh
-source $HOME/.dotfiles/misc-commands.sh
-source $HOME/.dotfiles/aliases.sh
+source ~/.private-environment-variables
+source ~/.dotfiles/pyenv-config.sh
+source ~/.dotfiles/backup-commands.sh
+source ~/.dotfiles/catfish-commands.sh
+source ~/.dotfiles/misc-commands.sh
+source ~/.dotfiles/aliases.sh
+source ~/.dotfiles/docker-config.sh
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
+# export stack path
+export PATH="/home/user_name/.local/bin:$PATH"
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# homebrew
+export PATH="/usr/local/sbin:$PATH"
+
+# octave
+export FONTCONFIG_PATH=/opt/X11/lib/X11/fontconfig
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+# gopath
+export GOPATH="/Users/will/go"
+
