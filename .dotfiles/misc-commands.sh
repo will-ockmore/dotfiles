@@ -10,7 +10,7 @@ renamealljpg() {
 }
 
 encodemessage() {
-  echo "openssl enc -base64 -d -A <<< `openssl enc -base64 <<< $@` | say"
+  echo "openssl enc -base64 -d -A <<< $(openssl enc -base64 <<< $@) | say"
 }
 
 printargs() {
