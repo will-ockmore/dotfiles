@@ -52,10 +52,7 @@ source $ZSH/oh-my-zsh.sh
 source ~/.private-environment-variables
 source ~/.dotfiles/pyenv-config.sh
 source ~/.dotfiles/backup-commands.sh
-source ~/.dotfiles/catfish-commands.sh
 source ~/.dotfiles/misc-commands.sh
 source ~/.dotfiles/aliases.sh
-source ~/.dotfiles/docker-config.sh
 
-# Add further $PATH setup here (eg. NVM, GOPATH etc.)
-
+# Add further setup here (eg. NVM, GOPATH etc.)
