@@ -57,23 +57,5 @@ source ~/.dotfiles/misc-commands.sh
 source ~/.dotfiles/aliases.sh
 source ~/.dotfiles/docker-config.sh
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-# export stack path
-export PATH="/home/user_name/.local/bin:$PATH"
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# homebrew
-export PATH="/usr/local/sbin:$PATH"
-
-# octave
-export FONTCONFIG_PATH=/opt/X11/lib/X11/fontconfig
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
-# gopath
-export GOPATH="/Users/will/go"
+# Add further $PATH setup here (eg. NVM, GOPATH etc.)
 
