@@ -14,6 +14,5 @@ alias nvmc="nvm current"
 
 
 # AWS
-
 # Fuzzy find CloudWatch Logs and tail them
 alias cwl="saw watch $(saw groups | fzf)"
