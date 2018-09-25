@@ -9,9 +9,11 @@ renamealljpg() {
   done
 }
 
+
 encodemessage() {
   echo "openssl enc -base64 -d -A <<< $(openssl enc -base64 <<< $@) | say"
 }
+
 
 printargs() {
   echo "$@"
@@ -23,6 +25,8 @@ printargs() {
   done
 }
 
+
+# Search chrome history
 chist() {
   local cols sep google_history open
   cols=$(( COLUMNS / 3 ))
@@ -43,8 +47,10 @@ chist() {
   fzf --ansi --multi | sed 's#.*\(https*://\)#\1#' | xargs $open > /dev/null 2> /dev/null
 }
 
+
 # display octal file permissions
 lso() { ls -alG "$@" | awk '{k=0;for(i=0;i<=8;i++)k+=((substr($1,i+2,1)~/[rwx]/)*2^(8-i));if(k)printf(" %0o ",k);print}'; }
+
 
 # display absolute path
 abspath() {
@@ -64,4 +70,16 @@ abspath() {
             echo "$(pwd)/$1"
         fi
     fi
+}
+
+
+# Fuzzy find CloudWatch Logs and tail them
+cwl() {
+  GROUP="$(saw groups | fzf)"
+
+  echo
+  echo "Tailing CloudWatch Logs for log group \e[1m$GROUP\e[0m..."
+  echo
+
+  saw watch $GROUP
 }
