@@ -52,29 +52,7 @@ source $ZSH/oh-my-zsh.sh
 source ~/.private-environment-variables
 source ~/.dotfiles/pyenv-config.sh
 source ~/.dotfiles/backup-commands.sh
-source ~/.dotfiles/catfish-commands.sh
 source ~/.dotfiles/misc-commands.sh
 source ~/.dotfiles/aliases.sh
-source ~/.dotfiles/docker-config.sh
 
-# export stack path
-export PATH="/home/user_name/.local/bin:$PATH"
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# homebrew
-export PATH="/usr/local/sbin:$PATH"
-
-# octave
-export FONTCONFIG_PATH=/opt/X11/lib/X11/fontconfig
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
-# gopath
-export GOPATH="/Users/will/go"
-export PATH=$PATH:$GOPATH/bin
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# Add further setup here (eg. NVM, GOPATH etc.)
