@@ -33,3 +33,28 @@ bktoext () {
   rsync -azh ~/.ssh/* $@/Backups/ssh
   rsync -azh ~/.zsh_history $@/Backups/.zsh_history
 }
+
+bkglacier () {
+  local PHOTOS_ARCHIVE_PATH="$1/photos.tar.gz"
+  local BACKUPS_ARCHIVE_PATH="$1/backups.tar.gz"
+  # zip archives
+  tar -zcvf $PHOTOS_ARCHIVE_PATH $1/photos
+  tar -zcvf $BACKUPS_ARCHIVE_PATH $1/Backups
+
+  # upload to glacier archive
+  AWS_SECRET_ACCESS_KEY=$BACKUP_AWS_SECRET_ACCESS_KEY \
+  AWS_ACCESS_KEY_ID=$BACKUP_AWS_ACCESS_KEY_ID \
+  aws glacier upload-archive \
+    --vault-name personal-backups \
+    --account-id - \
+    --body $PHOTOS_ARCHIVE_PATH
+
+  AWS_SECRET_ACCESS_KEY=$BACKUP_AWS_SECRET_ACCESS_KEY \
+  AWS_ACCESS_KEY_ID=$BACKUP_AWS_ACCESS_KEY_ID \
+  aws glacier upload-archive \
+    --vault-name personal-backups \
+    --account-id - \
+    --body $BACKUPS_ARCHIVE_PATH
+
+}
+

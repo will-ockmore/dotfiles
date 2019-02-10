@@ -57,9 +57,6 @@ source ~/.dotfiles/misc-commands.sh
 source ~/.dotfiles/aliases.sh
 source ~/.dotfiles/docker-config.sh
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
 # export stack path
 export PATH="/home/user_name/.local/bin:$PATH"
 
@@ -76,4 +73,8 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 # gopath
 export GOPATH="/Users/will/go"
+export PATH=$PATH:$GOPATH/bin
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
