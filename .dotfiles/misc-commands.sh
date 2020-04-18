@@ -83,3 +83,35 @@ cwl() {
 
   saw watch $GROUP
 }
+
+# Start development instance and return IP address
+start_dev_instance() {
+  aws ec2 start-instances --instance-ids $DEV_INSTANCE_ID > /dev/null
+
+  echo 'Waiting for instance to start...'
+
+  while [[ $(aws ec2 describe-instances --instance-ids $DEV_INSTANCE_ID |  jq -r '.Reservations[0].Instances[0].State.Name') != 'running'  ]]; do
+    echo '.'
+    sleep 3
+  done
+
+  echo 'Instance started. '
+  echo
+
+  DEV_INSTANCE_IP_ADDRESS=$(aws ec2 describe-instances --instance-ids $DEV_INSTANCE_ID | jq -r '.Reservations[0].Instances[0].NetworkInterfaces[0].Association.PublicIp')
+
+  echo "IP address: $DEV_INSTANCE_IP_ADDRESS"
+  echo
+  echo 'Connecting to instance...'
+
+# -o 'XAuthLocation=/opt/X11/bin/xauth' \
+
+
+  ssh \
+    -o 'ForwardX11Trusted=yes' \
+    -o 'ForwardX11=yes' \
+    -o 'IdentityFile=~/.ssh/similarity-search.pem' \
+    -o 'ForwardAgent=yes' \
+    -o 'IdentitiesOnly=yes' \
+    "ubuntu@$DEV_INSTANCE_IP_ADDRESS"
+}
