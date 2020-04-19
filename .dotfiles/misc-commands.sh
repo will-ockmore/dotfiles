@@ -26,6 +26,25 @@ printargs() {
 }
 
 
+# Search firefox history
+fhist() {
+  local cols sep firefox_history open
+  cols=$(( COLUMNS / 3 ))
+  sep='{::}'
+
+  firefox_history="$(find "$HOME/Library/Application Support/Firefox/Profiles" -name "places.sqlite" -print0 | xargs -0 ls -1 -t | head -1)"
+  cp -f "$firefox_history" /tmp/h
+  sqlite3 -separator $sep /tmp/h \
+    "select substr(title, 1, $cols), url
+     from moz_historyvisits
+     join moz_places
+     on moz_historyvisits.place_id = moz_places.id
+     order by visit_date desc" |
+  awk -F $sep '{printf "%-'$cols's  \x1b[36m%s\x1b[m\n", $1, $2}' |
+  fzf --ansi --multi | sed 's#.*\(https*://\)#\1#' | xargs open > /dev/null 2&>1
+  # fzf --ansi --multi | sed 's#.*\(https*://\)#\1#' | xargs $open > /dev/null 2> /dev/null
+}
+
 # Search chrome history
 chist() {
   local cols sep google_history open
@@ -86,11 +105,11 @@ cwl() {
 
 # Start development instance and return IP address
 start_dev_instance() {
-  aws ec2 start-instances --instance-ids $DEV_INSTANCE_ID > /dev/null
+  aws ec2 start-instances --profile production --instance-ids $DEV_INSTANCE_ID > /dev/null
 
   echo 'Waiting for instance to start...'
 
-  while [[ $(aws ec2 describe-instances --instance-ids $DEV_INSTANCE_ID |  jq -r '.Reservations[0].Instances[0].State.Name') != 'running'  ]]; do
+  while [[ $(aws ec2 describe-instances --profile production --instance-ids $DEV_INSTANCE_ID |  jq -r '.Reservations[0].Instances[0].State.Name') != 'running'  ]]; do
     echo '.'
     sleep 3
   done
@@ -98,7 +117,7 @@ start_dev_instance() {
   echo 'Instance started. '
   echo
 
-  DEV_INSTANCE_IP_ADDRESS=$(aws ec2 describe-instances --instance-ids $DEV_INSTANCE_ID | jq -r '.Reservations[0].Instances[0].NetworkInterfaces[0].Association.PublicIp')
+  DEV_INSTANCE_IP_ADDRESS=$(aws ec2 describe-instances --profile production --instance-ids $DEV_INSTANCE_ID | jq -r '.Reservations[0].Instances[0].NetworkInterfaces[0].Association.PublicIp')
 
   echo "IP address: $DEV_INSTANCE_IP_ADDRESS"
   echo
@@ -114,4 +133,11 @@ start_dev_instance() {
     -o 'ForwardAgent=yes' \
     -o 'IdentitiesOnly=yes' \
     "ubuntu@$DEV_INSTANCE_IP_ADDRESS"
+}
+
+# Daily coronavirus updates
+coronastats() {
+    [ "$(stat -c %y ~/.cache/corona 2>/dev/null | cut -d' ' -f1 )" != "$(date '+%Y-%m-%d')" ] && curl -s https://corona-stats.online > ~/.cache/corona
+
+    rg -e "Canada|UK|US|Country" ~/.cache/corona | cat
 }
