@@ -2,7 +2,7 @@ import time
 from subprocess import Popen
 import os.path
 
-NOTES_DIR = os.path.join(os.path.expanduser("~"), ".notes")
+NOTES_DIR = os.path.join(os.path.expanduser("~"), "notes")
 OUTPUT_DIR = os.path.join(NOTES_DIR, "pdf")
 
 
