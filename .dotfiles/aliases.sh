@@ -19,3 +19,4 @@ alias subscription_filters="saw groups | xargs -P8 -I {} aws logs describe-subsc
 
 # Workflow
 alias notes="python ~/.dotfiles/generate_notes_pdfs.py && open -a /Applications/Firefox.app ~/notes/pdf"
+alias ,t="tig status"
