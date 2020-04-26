@@ -93,13 +93,13 @@ abspath() {
 
 # Fuzzy find CloudWatch Logs and tail them
 cwl() {
-  GROUP="$(saw groups | fzf)"
+  GROUP="$(saw groups --profile production | fzf)"
 
   echo
   echo "Tailing CloudWatch Logs for log group \e[1m$GROUP\e[0m..."
   echo
 
-  saw watch $GROUP
+  saw watch --profile production $GROUP
 }
 
 # Start development instance and return IP address
