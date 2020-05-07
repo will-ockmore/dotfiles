@@ -1,13 +1,13 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/will/.oh-my-zsh
+export ZSH=/home/will/.oh-my-zsh
 
-DEFAULT_USER="Will"
+DEFAULT_USER="will"
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 
-# ZSH_THEME="agnoster-custom"
-ZSH_THEME="bureau"
+# ZSH_THEME="bureau"
+ZSH_THEME=""
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
@@ -49,6 +49,11 @@ setopt glob_dots
 
 source $ZSH/oh-my-zsh.sh
 
+# pure prompt
+fpath+=$HOME/.zsh/pure
+autoload -U promptinit; promptinit
+prompt pure
+
 source ~/.private-environment-variables
 source ~/.dotfiles/pyenv-config.sh
 source ~/.dotfiles/backup-commands.sh
@@ -56,3 +61,14 @@ source ~/.dotfiles/misc-commands.sh
 source ~/.dotfiles/aliases.sh
 
 # Add further setup here (eg. NVM, GOPATH etc.)
+export EDITOR='vim'
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export PATH=$PATH:$HOME/go/bin
+
