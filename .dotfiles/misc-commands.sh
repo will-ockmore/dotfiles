@@ -140,3 +140,12 @@ coronastats() {
 
     rg -e "Canada|UK|US|Country" ~/.cache/corona | cat
 }
+
+# Update git remote configuration to match SSH config
+configure_git_remote() {
+    local REMOTE_NAME REMOTE_URL
+    REMOTE_NAME=$(git remote -v | head -n 1 | awk '{print $1}')
+    REMOTE_URL=$(git remote -v | head -n 1 | awk -f ~/.dotfiles/modify_git_remote.awk)
+
+    git remote set-url "$REMOTE_NAME" "$REMOTE_URL"
+}
