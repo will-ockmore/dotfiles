@@ -20,3 +20,10 @@ alias subscription_filters="saw groups | xargs -P8 -I {} aws logs describe-subsc
 # Workflow
 alias notes="python ~/.dotfiles/generate_notes_pdfs.py && open -a /Applications/Firefox.app ~/notes/pdf"
 alias ,t="tig status"
+
+# General open command
+if [[ "$(uname)" == "Darwin" ]]; then
+    alias ']'='open'
+elif [[ "$(expr substr $(uname -s) 1 5)" == "Linux" ]]; then
+    alias ']'='xdg-open'
+fi
