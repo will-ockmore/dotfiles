@@ -62,13 +62,16 @@ source ~/.dotfiles/aliases.sh
 
 # Add further setup here (eg. NVM, GOPATH etc.)
 export EDITOR='vim'
+alias vi='vimx'
+alias vim='vimx'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+export FZF_DEFAULT_COMMAND="rg --files --no-ignore --hidden --follow --glob '!.git/*'"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export PATH=$PATH:$HOME/go/bin
+export GOPATH="$HOME/go"
+export PATH=$PATH:$GOPATH/bin
 
