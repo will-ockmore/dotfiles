@@ -142,10 +142,16 @@ coronastats() {
 }
 
 # Update git remote configuration to match SSH config
-configure_git_remote() {
+,gitseturl() {
     local REMOTE_NAME REMOTE_URL
     REMOTE_NAME=$(git remote -v | head -n 1 | awk '{print $1}')
     REMOTE_URL=$(git remote -v | head -n 1 | awk -f ~/.dotfiles/modify_git_remote.awk)
 
     git remote set-url "$REMOTE_NAME" "$REMOTE_URL"
+}
+
+,gitclone() {
+    local REMOTE_URL=$(awk -f ~/.dotfiles/modify_git_remote.awk <<< "origin $1")
+
+    git clone "$REMOTE_URL"
 }
