@@ -5,5 +5,7 @@
     "python.linting.flake8Enabled": true,
     "python.linting.enabled": true,
     "python.jediPath": "/home/will/.pyenv/versions/3.8.2/lib/python3.8/site-packages",
-    "python.formatting.blackPath": "/home/will/.pyenv/versions/3.8.2/bin/black"
+    "python.formatting.blackPath": "/home/will/.pyenv/versions/3.8.2/bin/black",
+    "prettier.tabWidth": 4,
+    "prettier.trailingComma": "es5"
 }
