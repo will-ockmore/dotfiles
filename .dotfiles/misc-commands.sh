@@ -153,7 +153,7 @@ coronastats() {
 }
 
 ,gitclone() {
-    local REMOTE_URL, GIT_EMAIL
+    local REMOTE_URL GIT_EMAIL
     REMOTE_URL=$(awk -f ~/.dotfiles/modify_git_remote.awk <<< "origin $1")
     GIT_EMAIL=$(awk -f ~/.dotfiles/modify_git_email.awk <<< "origin $1")
 
