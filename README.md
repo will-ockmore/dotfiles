@@ -1,5 +1,40 @@
 # dotfiles
 
+## Linux
+
+### Backups
+
+[Duplicacy](https://github.com/gilbertchen/duplicacy/wiki) is used for incremental backups to Backblaze B2.
+
+Install the CLI version and ensure cron / anachron is installed - see
+[guide](https://docs.fedoraproject.org/en-US/fedora/rawhide/system-administrators-guide/monitoring-and-automation/Automating_System_Tasks/) on fedora project.
+
+Initialise the backup repositories. These commands were used the first time around, and may 
+need to be modified to avoid overwriting the existing repos:
+
+```bash
+cd ~
+duplicacy init --encrypt homedir_backup b2://wock-duplicacy-backups-homedir
+cd /run/media/will/external_hd
+duplicacy init --encrypt external_hdd_backup b2://wock-duplicacy-backups-external-hdd
+```
+
+Set the necessary variables so the backups can run without input
+
+```bash
+duplicacy set -storage backblaze_b2_backup -key b2_key -value "$B2_DUPLICACY_ACCOUNT_KEY"
+duplicacy set -storage backblaze_b2_backup -key b2_id -value "$B2_DUPLICACY_KEY_ID"
+duplicacy set -storage backblaze_b2_backup -key password -value "$DUPLICACY_STORAGE_PASSWORD" 
+```
+
+Finally, move the tasks from `tasks/daily` to the appropriate folder to be run by `anacron` -
+on the current fedora install this is under `/etc/cron.daily`
+
+```bash
+sudo cp -a tasks/daily/* /etc/cron.daily/
+```
+
+
 ## Mac
 
 ### First Steps
