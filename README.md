@@ -27,11 +27,13 @@ duplicacy set -storage backblaze_b2_backup -key b2_id -value "$B2_DUPLICACY_KEY_
 duplicacy set -storage backblaze_b2_backup -key password -value "$DUPLICACY_STORAGE_PASSWORD" 
 ```
 
-Finally, move the tasks from `tasks/daily` to the appropriate folder to be run by `anacron` -
-on the current fedora install this is under `/etc/cron.daily`
+Create a backup logs folder under `/var/log/duplicacy_backups`.
+
+The anacrontab should be updated once the backups are working, with lines in the form
 
 ```bash
-sudo cp -a tasks/daily/* /etc/cron.daily/
+1    25   backup-home             /home/will/.dotfiles/tasks/daily/backup_home >> /var/log/duplicacy_backups/backup_home.log 2>&1
+1    25   backup-external-drive   /home/will/.dotfiles/tasks/daily/backup_externalhdd >> /var/log/duplicacy_backups/backup_externalhdd.log 2>&1
 ```
 
 
