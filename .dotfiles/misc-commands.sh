@@ -147,21 +147,25 @@ coronastats() {
     REMOTE_NAME=$(git remote -v | head -n 1 | awk '{print $1}')
     REMOTE_URL=$(git remote -v | head -n 1 | awk -f ~/.dotfiles/modify_git_remote.awk)
     GIT_EMAIL=$(git remote -v | head -n 1 | awk -f ~/.dotfiles/modify_git_email.awk)
+    GIT_SIGNINGKEY=$(git remote -v | head -n 1 | awk -f ~/.dotfiles/modify_git_signingkey.awk)
 
     git remote set-url "$REMOTE_NAME" "$REMOTE_URL"
     git config user.email "$GIT_EMAIL"
+    git config user.signingkey "$GIT_SIGNINGKEY"
 }
 
 ,gitclone() {
     local REMOTE_URL GIT_EMAIL
     REMOTE_URL=$(awk -f ~/.dotfiles/modify_git_remote.awk <<< "origin $1")
     GIT_EMAIL=$(awk -f ~/.dotfiles/modify_git_email.awk <<< "origin $1")
+    GIT_SIGNINGKEY=$(awk -f ~/.dotfiles/modify_git_signingkey.awk <<< "origin $1")
 
     git clone "$REMOTE_URL"
 
     # Enter repository directory
     cd $(awk '{match($2, /git@.*\/(.*)\.git/, groups); print groups[1]}' <<< "origin $1")
     git config user.email "$GIT_EMAIL"
+    git config user.signingkey "$GIT_SIGNINGKEY"
     cd -
 }
 
