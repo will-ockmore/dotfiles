@@ -28,4 +28,4 @@ fi
 
 # Workflow
 alias ,t="tig status"
-
+alias l="exa -lahF"
