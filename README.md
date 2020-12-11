@@ -2,6 +2,10 @@
 
 ## Linux
 
+### Scripts
+
+Any scripts under the `misc_scripts` directory will be available on `$PATH`. See `.zshrc`
+
 ### Backups
 
 [Duplicacy](https://github.com/gilbertchen/duplicacy/wiki) is used for incremental backups to Backblaze B2.

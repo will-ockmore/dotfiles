@@ -1,0 +1,121 @@
+#!/usr/bin/env python
+
+import argparse
+import textwrap
+import shutil
+from pathlib import Path
+from datetime import date
+
+
+def progress_bar(
+    iterable,
+    prefix="Progress:",
+    suffix="",
+    decimals=1,
+    length=50,
+    fill="█",
+    print_end="\r",
+):
+    """
+    Call in a loop to create terminal progress bar
+    @params:
+        iteration   - Required  : current iteration (Int)
+        total       - Required  : total iterations (Int)
+        prefix      - Optional  : prefix string (Str)
+        suffix      - Optional  : suffix string (Str)
+        decimals    - Optional  : positive number of decimals in percent complete (Int)
+        length      - Optional  : character length of bar (Int)
+        fill        - Optional  : bar fill character (Str)
+        print_end    - Optional  : end character (e.g. "\r", "\r\n") (Str)
+
+    See https://stackoverflow.com/a/34325723
+    """
+    total = len(iterable)
+    # Progress Bar Printing Function
+    def print_progress_bar(iteration):
+        percent = ("{0:." + str(decimals) + "f}").format(
+            100 * (iteration / float(total))
+        )
+        filled_length = int(length * iteration // total)
+        bar = fill * filled_length + "-" * (length - filled_length)
+        print(f"\r{prefix} |{bar}| {percent}% {suffix}", end=print_end)
+
+    # Initial Call
+    print_progress_bar(0)
+    # Update Progress Bar
+    for i, item in enumerate(iterable):
+        yield item
+        print_progress_bar(i + 1)
+    # Print New Line on Complete
+    print()
+
+
+def main():
+    """
+    Copy photos from any storage location(s) to a structured
+    folder format, with deduplication.
+    """
+
+    parser = argparse.ArgumentParser(
+        description=textwrap.dedent(main.__doc__),
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+    )
+    parser.add_argument("storage_locations", nargs="+", metavar="SOURCE")
+    parser.add_argument("destination_location", metavar="DEST")
+    parser.add_argument(
+        "--file-types",
+        metavar="EXTENSIONS",
+        help="A comma-separated list of file extensions to copy",
+        default=".JPG,.jpg",
+    )
+    args = parser.parse_args()
+
+    results = []
+
+    for storage_location in args.storage_locations:
+        for extension in args.file_types.split(","):
+            results.extend(list(Path(storage_location).rglob("*" + extension)))
+
+    # Find files that are already archived
+    destination_files = []
+    for extension in args.file_types.split(","):
+        destination_files.extend(
+            list(Path(args.destination_location).rglob("*" + extension))
+        )
+
+    destination_file_names = [f.name for f in destination_files]
+
+    files_to_backup = []
+    dupes = []
+
+    for result in results:
+        if any(filename.endswith(result.name) for filename in destination_file_names):
+            # Prepended date for archived file is ignored
+            # File was previously backed up
+            dupes.append(result)
+        else:
+            files_to_backup.append(result)
+
+    today = date.today()
+    current_year = today.year
+    archive_subfolder = Path(
+        f"{args.destination_location}/{current_year}/{today.strftime('%Y-%m-%d')}/"
+    )
+
+    if files_to_backup:
+        archive_subfolder.mkdir(parents=True, exist_ok=True)
+
+        for filepath in progress_bar(files_to_backup):
+            shutil.copy2(filepath, archive_subfolder.joinpath(f"{filepath.name}"))
+
+    print()
+    print(
+        f"Successfully copied {len(files_to_backup)} file{'' if len(files_to_backup) == 1 else 's'} to {archive_subfolder}."
+    )
+    print()
+    print(f"Skipped {len(dupes)} duplicate file{'' if len(dupes) == 1 else 's'}.")
+    print()
+
+
+if __name__ == "__main__":
+    main()

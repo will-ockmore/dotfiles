@@ -60,10 +60,15 @@ source ~/.dotfiles/backup-commands.sh
 source ~/.dotfiles/misc-commands.sh
 source ~/.dotfiles/aliases.sh
 
+# Add scripts to PATH
+export PATH=$PATH:$HOME/.dotfiles/misc_scripts
+
 # Add further setup here (eg. NVM, GOPATH etc.)
 export EDITOR='vim'
 alias vi='vimx'
 alias vim='vimx'
+
+export GPG_TTY=$(tty)
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND="rg --files --no-ignore --hidden --follow --glob '!.git/*'"
