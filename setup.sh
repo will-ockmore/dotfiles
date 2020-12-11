@@ -19,6 +19,8 @@ copy_dotfiles() {
 	rsync -azh ./.dotfiles ~
 	rsync -azh ./.zshrc ~/.zshrc
 	rsync -azh ./.gitconfig ~/.gitconfig
+	rsync -azh ./.tmux.conf ~/.tmux.conf
+	rsync -azh ./kitty ~/.config/kitty
 
 	# setup blank private variables
 	touch ~/.private-environment-variables
