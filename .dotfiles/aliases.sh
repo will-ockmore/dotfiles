@@ -2,7 +2,7 @@
 
 
 # Python
-alias enva="source env/bin/activate"
+alias enva="source venv/bin/activate"
 
 
 # Javascript
