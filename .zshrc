@@ -80,3 +80,6 @@ export NVM_DIR="$HOME/.nvm"
 export GOPATH="$HOME/go"
 export PATH=$PATH:$GOPATH/bin
 
+# Add pip --user programs to PATH
+export PATH=$PATH:$HOME/.local/bin
+
