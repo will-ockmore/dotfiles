@@ -1,0 +1,12 @@
+session_name: "${TMUXP_PROJECT_NAME}"
+windows:
+- focus: 'true'
+  layout: ddcc,274x66,0,0{178x66,0,0,4,95x66,179,0,5}
+  panes:
+  - focus: 'true'
+    shell_command: 
+      - source venv/bin/activate
+      - vimx
+  - source venv/bin/activate
+  start_directory: "/home/will/code/${TMUXP_PROJECT_NAME}"
+  window_name: "${TMUXP_PROJECT_NAME}"

@@ -1,0 +1,31 @@
+session_name: 'soundplug'
+
+windows:
+- window_name: server/db
+  layout: ada7,274x66,0,0{137x66,0,0,0,136x66,138,0,1}
+  start_directory: /home/will/code/soundplug/soundplug-app
+  options:
+    automatic-rename: 'off'
+  panes:
+  - shell_command:
+      - set -o allexport; source .env; set +o allexport && source venv/bin/activate
+      - while ! nc -z localhost 5432; do sleep 0.1; done; python manage.py runserver
+  - docker-compose up
+
+- window_name: soundplug_app
+  focus: 'true'
+  layout: 6708,213x53,0,0[213x29,0,0,3,213x23,0,30{106x23,0,30,4,106x23,107,30,6}]
+  start_directory: /home/will/code/soundplug/soundplug-app
+  options:
+    automatic-rename: 'off'
+  panes:
+  - focus: 'true'
+    shell_command:
+    - set -o allexport; source .env; set +o allexport && source venv/bin/activate
+    - vimx
+  - shell_command:
+    - cd ./frontend
+    - nvm use
+    - npm start
+  - shell_command:
+    - set -o allexport; source .env; set +o allexport && source venv/bin/activate
