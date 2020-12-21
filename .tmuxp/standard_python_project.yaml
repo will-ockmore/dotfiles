@@ -1,7 +1,7 @@
 session_name: "${TMUXP_PROJECT_NAME}"
 windows:
 - focus: 'true'
-  layout: ddcc,274x66,0,0{178x66,0,0,4,95x66,179,0,5}
+  layout: 062b,274x66,0,0{190x66,0,0,26,83x66,191,0,27}
   panes:
   - focus: 'true'
     shell_command: 
