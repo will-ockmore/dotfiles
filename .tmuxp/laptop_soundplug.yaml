@@ -24,6 +24,7 @@ windows:
     - set -o allexport; source .env; set +o allexport && source venv/bin/activate
     - vimx
   - shell_command:
+    - set -o allexport; source .env; set +o allexport 
     - cd ./frontend
     - nvm use
     - npm start
