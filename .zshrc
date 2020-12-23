@@ -14,7 +14,7 @@ ZSH_THEME=""
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
@@ -83,3 +83,5 @@ export PATH=$PATH:$GOPATH/bin
 # Add pip --user programs to PATH
 export PATH=$PATH:$HOME/.local/bin
 
+
+source /home/will/.config/broot/launcher/bash/br
