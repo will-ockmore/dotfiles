@@ -1,4 +1,4 @@
-session_name: 'soundplug'
+session_name: soundplug
 
 windows:
 - window_name: server/db
@@ -26,3 +26,13 @@ windows:
     - npm start
   - shell_command:
     - set -o allexport; source .env; set +o allexport && source venv/bin/activate
+
+- window_name: tf_infra 
+  layout: f4f1,384x92,0,0{234x92,0,0,25,149x92,235,0[149x46,235,0,26,149x45,235,47,27]}
+  options: {}
+  start_directory: /home/will/code/soundplug/tf-infra
+  panes:
+  - shell_command: vimx
+  - shell_command:
+    - cd env/aws/prod
+  - pane
