@@ -32,7 +32,6 @@ windows:
   options: {}
   start_directory: /home/will/code/soundplug/tf-infra
   panes:
-  - shell_command: vimx
-  - shell_command:
-    - cd env/aws/prod
-  - pane
+  - source venv/bin/activate && vimx
+  - source venv/bin/activate && cd env/aws/prod
+  - source venv/bin/activate

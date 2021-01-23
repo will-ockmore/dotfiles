@@ -30,3 +30,11 @@ windows:
     - npm start
   - shell_command:
     - set -o allexport; source .env; set +o allexport && source venv/bin/activate
+
+- window_name: tf-infra
+  layout: b9ac,213x51,0,0[213x23,0,0,6,213x27,0,24{106x27,0,24,8,106x27,107,24,9}]
+  start_directory: /home/will/code/soundplug/tf-infra
+  panes:
+  - source env/bin/activate && vimx
+  - source env/bin/activate && cd env/aws/prod
+  - source env/bin/activate
