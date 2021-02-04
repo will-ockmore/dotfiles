@@ -2,8 +2,7 @@
 
 
 # Python
-alias enva="source venv/bin/activate"
-
+alias enva='if poetry check > /dev/null 2>&1; then source "$( poetry env list --full-path | grep Activated | cut -d'\'' '\'' -f1 )/bin/activate"; else source venv/bin/activate; fi'
 
 # Javascript
 alias ni="npm install"
