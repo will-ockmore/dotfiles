@@ -5,8 +5,8 @@ windows:
   panes:
   - focus: 'true'
     shell_command: 
-      - source venv/bin/activate
+      - if poetry check > /dev/null 2>&1; then poetry shell; else source venv/bin/activate; fi
       - vimx
-  - source venv/bin/activate
+  - if poetry check > /dev/null 2>&1; then poetry shell; else source venv/bin/activate; fi
   start_directory: "/home/will/code/${TMUXP_PROJECT_NAME}"
   window_name: "${TMUXP_PROJECT_NAME}"
