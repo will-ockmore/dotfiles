@@ -1,14 +1,11 @@
 session_name: AXO071
 windows:
 - focus: 'true'
-  layout: 76c1,213x51,0,0[213x25,0,0,4,213x25,0,26{106x25,0,26,15,106x25,107,26,16}]
+  layout: 1fc7,213x51,0,0[213x33,0,0,4,213x17,0,34,5]
   panes:
   - focus: 'true'
     shell_command: vimx
-  - shell_command:
-      - nvm use
-      - npm start
-  - 'while ! nc -z localhost 27015; do sleep 0.1; done; ] http://localhost:8888'
+  - 'while ! nc -z localhost 8888; do sleep 0.1; done; ] http://localhost:8888'
   start_directory: /home/will/code/AXO071
   window_name: AXO071
 - layout: 6565,274x66,0,0,92

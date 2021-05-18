@@ -1,0 +1,12 @@
+session_name: "${TMUXP_PROJECT_NAME}"
+windows:
+- focus: 'true'
+  layout: 1fc7,213x51,0,0[213x33,0,0,4,213x17,0,34,5]
+  panes:
+  - focus: 'true'
+    shell_command: 
+      - if poetry check > /dev/null 2>&1; then source "$( poetry env list --full-path | grep Activated | cut -d' ' -f1 )/bin/activate"; else source venv/bin/activate; fi
+      - vimx
+  - if poetry check > /dev/null 2>&1; then source "$( poetry env list --full-path | grep Activated | cut -d' ' -f1 )/bin/activate"; else source venv/bin/activate; fi
+  start_directory: "/home/will/code/${TMUXP_PROJECT_NAME}"
+  window_name: "${TMUXP_PROJECT_NAME}"
