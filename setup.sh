@@ -23,10 +23,11 @@ copy_dotfiles() {
 	rsync -azh ./kitty ~/.config/kitty
 
 	# setup blank private variables
-	touch ~/.private-environment-variables
+    cp -a ./private_env_variables_template.sh ~/.private-environment-variables
 
 	echo
 	echo "The location to save private ENV vars for scripts:" ~/.private-environment-variables
+    echo "Please fill out required variables"
 	echo
 }
 

@@ -1,8 +1,8 @@
 {
 if ($2 ~ /git@.*:axomic\/(.*)\.git/)
     # If within axomic repository, use work account
-    print "C91C04974128001D"
-else if ($2 ~ /git@.*:(.*)\.git/)
+    print GIT_GPG_SIGNING_KEY_WORK
+else 
     # Any other repository should use personal account
-    print "9BEA8964EAAFC4AD"
+    print GIT_GPG_SIGNING_KEY_PERSONAL
 }

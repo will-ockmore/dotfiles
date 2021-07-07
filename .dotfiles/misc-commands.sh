@@ -148,7 +148,7 @@ coronastats() {
     REMOTE_NAME=$(git remote -v | head -n 1 | awk '{print $1}')
     REMOTE_URL=$(git remote -v | head -n 1 | awk -f ~/.dotfiles/modify_git_remote.awk)
     GIT_EMAIL=$(git remote -v | head -n 1 | awk -f ~/.dotfiles/modify_git_email.awk)
-    GIT_SIGNINGKEY=$(git remote -v | head -n 1 | awk -f ~/.dotfiles/modify_git_signingkey.awk)
+    GIT_SIGNINGKEY=$(git remote -v | head -n 1 | awk -v GIT_GPG_SIGNING_KEY_WORK=$GIT_GPG_SIGNING_KEY_WORK -v GIT_GPG_SIGNING_KEY_PERSONAL=$GIT_GPG_SIGNING_KEY_PERSONAL -f ~/.dotfiles/modify_git_signingkey.awk)
 
     git remote set-url "$REMOTE_NAME" "$REMOTE_URL"
     git config user.email "$GIT_EMAIL"
@@ -159,7 +159,7 @@ coronastats() {
     local REMOTE_URL GIT_EMAIL
     REMOTE_URL=$(awk -f ~/.dotfiles/modify_git_remote.awk <<< "origin $1")
     GIT_EMAIL=$(awk -f ~/.dotfiles/modify_git_email.awk <<< "origin $1")
-    GIT_SIGNINGKEY=$(awk -f ~/.dotfiles/modify_git_signingkey.awk <<< "origin $1")
+    GIT_SIGNINGKEY=$(awk -v GIT_GPG_SIGNING_KEY_WORK=$GIT_GPG_SIGNING_KEY_WORK -v GIT_GPG_SIGNING_KEY_PERSONAL=$GIT_GPG_SIGNING_KEY_PERSONAL -f ~/.dotfiles/modify_git_signingkey.awk <<< "origin $1")
 
     git clone "$REMOTE_URL"
 
