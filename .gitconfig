@@ -4,8 +4,12 @@
   name = Will Ockmore
   email = will.ockmore@gmail.com
   signingkey = 9BEA8964EAAFC4AD
+
 [push]
   default = simple
+
+[pull]
+  rebase = false
 
 [fetch]
   prune = true
