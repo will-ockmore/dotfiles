@@ -1,0 +1,37 @@
+session_name: soundplug
+
+windows:
+- window_name: server/db
+  layout: ada7,274x66,0,0{137x66,0,0,0,136x66,138,0,1}
+  start_directory: /home/will/code/soundplug/soundplug-app
+  panes:
+  - shell_command:
+      - set -o allexport; source .env; set +o allexport && source venv/bin/activate
+      - while ! nc -z localhost 5432; do sleep 0.1; done; python manage.py runserver
+  - docker-compose up
+
+- window_name: soundplug_app
+  focus: 'true'
+  layout: 9078,274x66,0,0{179x66,0,0,2,94x66,180,0[94x17,180,0,3,94x48,180,18,4]}
+  start_directory: /home/will/code/soundplug/soundplug-app
+  panes:
+  - focus: 'true'
+    shell_command:
+    - set -o allexport; source .env; set +o allexport && source venv/bin/activate
+    - vimx
+  - shell_command:
+    - set -o allexport; source .env; set +o allexport 
+    - cd ./frontend
+    - nvm use
+    - npm start
+  - shell_command:
+    - set -o allexport; source .env; set +o allexport && source venv/bin/activate
+
+- window_name: tf_infra 
+  layout: f4f1,384x92,0,0{234x92,0,0,25,149x92,235,0[149x46,235,0,26,149x45,235,47,27]}
+  options: {}
+  start_directory: /home/will/code/soundplug/tf-infra
+  panes:
+  - source venv/bin/activate && vimx
+  - source venv/bin/activate && cd env/aws/prod
+  - source venv/bin/activate
