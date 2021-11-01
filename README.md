@@ -6,41 +6,6 @@
 
 Any scripts under the `misc_scripts` directory will be available on `$PATH`. See `.zshrc`
 
-### Backups
-
-[Duplicacy](https://github.com/gilbertchen/duplicacy/wiki) is used for incremental backups to Backblaze B2.
-
-Install the CLI version and ensure cron / anachron is installed - see
-[guide](https://docs.fedoraproject.org/en-US/fedora/rawhide/system-administrators-guide/monitoring-and-automation/Automating_System_Tasks/) on fedora project.
-
-Initialise the backup repositories. These commands were used the first time around, and may 
-need to be modified to avoid overwriting the existing repos:
-
-```bash
-cd ~
-duplicacy init --encrypt homedir_backup b2://wock-duplicacy-backups-homedir
-cd /run/media/will/external_hd
-duplicacy init --encrypt external_hdd_backup b2://wock-duplicacy-backups-external-hdd
-```
-
-Set the necessary variables so the backups can run without input
-
-```bash
-duplicacy set -storage backblaze_b2_backup -key b2_key -value "$B2_DUPLICACY_ACCOUNT_KEY"
-duplicacy set -storage backblaze_b2_backup -key b2_id -value "$B2_DUPLICACY_KEY_ID"
-duplicacy set -storage backblaze_b2_backup -key password -value "$DUPLICACY_STORAGE_PASSWORD" 
-```
-
-Create a backup logs folder under `/var/log/duplicacy_backups`.
-
-The anacrontab should be updated once the backups are working, with lines in the form
-
-```bash
-1    25   backup-home             /home/will/.dotfiles/tasks/daily/backup_home >> /var/log/duplicacy_backups/backup_home.log 2>&1
-1    25   backup-external-drive   /home/will/.dotfiles/tasks/daily/backup_externalhdd >> /var/log/duplicacy_backups/backup_externalhdd.log 2>&1
-```
-
-
 ## Mac
 
 ### First Steps
@@ -74,12 +39,14 @@ The setup script (`setup.sh`) will add packages and setup your environment.
 3. Next step is to install [zsh](http://www.zsh.org/) and setup [OhMyZsh](https://github.com/robbyrussell/oh-my-zsh)
 4. Then [pyenv](https://github.com/pyenv/pyenv) and [nvm](https://github.com/creationix/nvm) are installed
 5. Extra programs are added from Homebrew:
-  - [tig](https://github.com/jonas/tig)
-  - [fzf](https://github.com/junegunn/fzf): Answer yes to auto-completion and key bindings, don't update shell configuration files.
+
+- [tig](https://github.com/jonas/tig)
+- [fzf](https://github.com/junegunn/fzf): Answer yes to auto-completion and key bindings, don't update shell configuration files.
+
 6. Finally Sublime is configured:
-    - The `subl` command is set up to work from the terminal
-    - A symlink is made to user settings copied to dotfiles from this project
-    - A script is added to add the nvm version of node to `PATH`, so packages which depend on it can work
+   - The `subl` command is set up to work from the terminal
+   - A symlink is made to user settings copied to dotfiles from this project
+   - A script is added to add the nvm version of node to `PATH`, so packages which depend on it can work
 
 There are a couple more steps to get Sublime completely working.
 Start up an instance of it, and wait for Package Control to install everything.

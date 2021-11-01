@@ -2,6 +2,7 @@
 
 set -euo pipefail
 
+curl "${HEALTHCHECKS_BACKUP_HOMEDIR}/start"
 
 cd /home/will
 /usr/local/bin/duplicacy backup -stats
@@ -12,6 +13,4 @@ else
     echo "External drive not connected"
 fi
 
-
-
-
+curl "$HEALTHCHECKS_BACKUP_HOMEDIR"
