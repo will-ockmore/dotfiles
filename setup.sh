@@ -20,6 +20,7 @@ copy_dotfiles() {
 	rsync -azh ./.zshrc ~/.zshrc
 	rsync -azh ./.gitconfig ~/.gitconfig
 	rsync -azh ./.tmux.conf ~/.tmux.conf
+
 	rsync -azh ./kitty ~/.config/kitty
 
 	# setup blank private variables
@@ -31,32 +32,7 @@ copy_dotfiles() {
 	echo
 }
 
-install_homebrew() {
-	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-	brew update
-
-	printf "\n\nInstalled and updated Homebrew.\n\n"
-}
-
-install_homebrew_programs() {
-
-	printf "\n\nInstalling programs from brew...\n\n"
-
-	brew install tig
-
-	# install fzf and completions
-	brew install fzf
-	/usr/local/opt/fzf/install
-
-
-	printf "\n\nInstalled required programs from Homebrew.\n\n"
-}
-
 setup_ohmyzsh() {
-	# install ZSH
-	brew install zsh zsh-completions
-
 	git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 	chsh -s /bin/zsh
 }
@@ -65,10 +41,6 @@ setup_pyenv() {
 	git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 
 	exec $SHELL
-
-	# install recent as default
-	pyenv install 3.6.4
-	pyenv global 3.6.4
 }
 
 setup_nvm() {
@@ -116,7 +88,6 @@ run_setup() {
 	OS=get_os
 
 	copy_dotfiles
-	install_homebrew
 	setup_ohmyzsh
 	setup_pyenv
 	setup_nvm
