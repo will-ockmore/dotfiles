@@ -55,7 +55,6 @@ autoload -U promptinit; promptinit
 prompt pure
 
 source ~/.private-environment-variables
-source ~/.dotfiles/pyenv-config.sh
 source ~/.dotfiles/backup-commands.sh
 source ~/.dotfiles/misc-commands.sh
 source ~/.dotfiles/aliases.sh
@@ -64,9 +63,9 @@ source ~/.dotfiles/aliases.sh
 export PATH=$PATH:$HOME/.dotfiles/misc_scripts
 
 # Add further setup here (eg. NVM, GOPATH etc.)
-export EDITOR='vim'
-alias vi='vimx'
-alias vim='vimx'
+export EDITOR='nvim'
+alias vi='nvim'
+alias vim='nvim'
 
 export GPG_TTY=$(tty)
 
@@ -83,5 +82,5 @@ export PATH=$PATH:$GOPATH/bin
 # Add pip --user programs to PATH
 export PATH=$PATH:$HOME/.local/bin
 
+source ~/.dotfiles/pyenv-config.sh
 
-source /home/will/.config/broot/launcher/bash/br
