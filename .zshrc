@@ -82,5 +82,10 @@ export PATH=$PATH:$GOPATH/bin
 # Add pip --user programs to PATH
 export PATH=$PATH:$HOME/.local/bin
 
+
+source /home/will/.config/broot/launcher/bash/br
+
+export PATH="$HOME/.poetry/bin:$PATH"
 source ~/.dotfiles/pyenv-config.sh
 
+eval "$(luarocks path --bin)"
