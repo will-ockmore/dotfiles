@@ -1,0 +1,10 @@
+session_name: "${TMUXP_PROJECT_NAME}"
+windows:
+- focus: 'true'
+  layout: b263,213x53,0,0{148x53,0,0,5,64x53,149,0,7}
+  panes:
+  - focus: 'true'
+    shell_command: vim
+  - pane
+  start_directory: "${HOME}/code/${TMUXP_PROJECT_NAME}"
+  window_name: "${TMUXP_PROJECT_NAME}"
