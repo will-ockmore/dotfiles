@@ -51,13 +51,19 @@ cp -a .tmux.conf ~
 
 Use the [kitty themes](https://github.com/dexpota/kitty-themes) repo for a general collection of themes.
 
+To update the themes:
+
 ```
-mkdir -p ~/.config/kitty/themes
-git clone --depth 1 https://github.com/dexpota/kitty-themes.git ~/.config/kitty/themes/kitty-themes
-cp -a
+git clone --depth 1 https://github.com/dexpota/kitty-themes.git kitty/themes/kitty-themes
 ```
 
-Then make sure any custom themes are also installed under the `~/.config/kitty/themes` path.
+Then make sure any custom themes are also installed under the `./kitty/themes` path.
+
+Install the configuration and themes locally:
+
+```
+cp -a ~/code/dotfiles/kitty ~/.config/
+```
 
 To change to a new theme:
 
