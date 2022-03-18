@@ -6,7 +6,7 @@
   gpgsign = true
 
 [pull]
-  rebase = false
+  rebase = true
 
 [fetch]
   prune = true
