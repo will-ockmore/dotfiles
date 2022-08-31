@@ -56,6 +56,7 @@ source ~/.private-environment-variables
 source ~/.dotfiles/backup-commands.sh
 source ~/.dotfiles/misc-commands.sh
 source ~/.dotfiles/aliases.sh
+source ~/.dotfiles/keymaps.sh
 
 # Add scripts to PATH
 export PATH=$PATH:$HOME/.dotfiles/misc_scripts
