@@ -47,6 +47,12 @@ cp -a ./nightfox_tmux.tmux ~/.config/tmux/
 cp -a .tmux.conf ~
 ```
 
+#### Tmuxp configuration
+
+```
+cp -a .tmuxp ~/
+```
+
 ### Kitty themes
 
 Use the [kitty themes](https://github.com/dexpota/kitty-themes) repo for a general collection of themes.

@@ -47,8 +47,6 @@ setopt glob_dots
 # Custom configuration
 # All commands and aliases are stored separately in the .dotfiles folder
 
-source $ZSH/oh-my-zsh.sh
-
 # pure prompt
 fpath+=$HOME/.zsh/pure
 autoload -U promptinit; promptinit
