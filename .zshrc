@@ -4,6 +4,9 @@ setopt extended_glob
 # don't require explicitly matching a leading . in filenames
 setopt glob_dots
 
+# Skip identical history entries in search
+setopt histignoredups
+
 # Custom configuration
 # All commands and aliases are stored separately in the .dotfiles folder
 
