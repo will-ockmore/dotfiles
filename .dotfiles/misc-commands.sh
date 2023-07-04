@@ -172,6 +172,6 @@ coronastats() {
 
 # Git
 
-gb() {
+,gb() {
     git checkout $(git branch --sort=-committerdate | rg '\bwo/' | fzf)
 }
