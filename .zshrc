@@ -37,6 +37,9 @@ export EDITOR='nvim'
 alias vi='nvim'
 alias vim='nvim'
 
+# Console Do Not Track https://consoledonottrack.com/
+export DO_NOT_TRACK=1
+
 export GPG_TTY=$(tty)
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
