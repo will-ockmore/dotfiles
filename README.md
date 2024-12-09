@@ -18,6 +18,8 @@ Any scripts under the `misc_scripts` directory will be available on `$PATH`. See
 1. Install chrome and login to account(s). Agree to sync, this will add your extensions.
 2. Sign in with your Apple ID to the app store and install Magnet.
 3. Open Preferences and under mouse, uncheck Natural Scroll Direction.
+4. Enable key repeat properly: https://apple.stackexchange.com/a/58847
+5. Speed up key repeat: https://apple.stackexchange.com/a/83923
 
 ## General
 
