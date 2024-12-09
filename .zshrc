@@ -23,8 +23,6 @@ fpath+=$HOME/.zsh/pure
 autoload -U promptinit; promptinit
 prompt pure
 
-source ~/.private-environment-variables
-source ~/.dotfiles/backup-commands.sh
 source ~/.dotfiles/misc-commands.sh
 source ~/.dotfiles/aliases.sh
 source ~/.dotfiles/keymaps.sh
@@ -46,12 +44,7 @@ export GPG_TTY=$(tty)
 export FZF_DEFAULT_COMMAND="rg --files --no-ignore --hidden --follow --glob '!.git/*'"
 export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 # Add pip --user programs to PATH
 export PATH=$PATH:$HOME/.local/bin
 
 export PATH="$HOME/.poetry/bin:$PATH"
-source ~/.dotfiles/pyenv-config.sh

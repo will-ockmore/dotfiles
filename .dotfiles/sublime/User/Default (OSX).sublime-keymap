@@ -1,5 +1,0 @@
-[
-    { "keys": ["super+\\"], "command": "toggle_side_bar" },
-    { "keys": ["super+l"], "command": "expand_selection", "args": {"to": "line"} },
-    { "keys": ["super+ctrl+a"], "command": "valign" }
-]

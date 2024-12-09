@@ -19,21 +19,22 @@ Any scripts under the `misc_scripts` directory will be available on `$PATH`. See
 2. Sign in with your Apple ID to the app store and install Magnet.
 3. Open Preferences and under mouse, uncheck Natural Scroll Direction.
 
-### Applications
-
-Download and install:
-
-- [ITerm2](https://www.iterm2.com/)
-- [Spotify](https://www.spotify.com/uk/download/mac/)
-
 ## General
 
 ### Applications
 
-- Kitty
-- Pyenv
-- Nvm
-- neovim
+- Kitty https://sw.kovidgoyal.net/kitty/
+- Homebrew https://brew.sh/
+- mise https://mise.jdx.dev/
+- pure prompt https://github.com/sindresorhus/pure - choose the manual installation method.
+- fzf https://github.com/junegunn/fzf - install using git. Use default for all options (`[y]`).
+- neovim - `mise use -g neovim@0.9.5` to mitigate vscode-neovim bug. If this is no longer a problem, omit the version. See also: https://github.com/will-ockmore/vimrc
+- ripgrep - `mise use -g ripgrep`
+- tmux - `mise use -g tmux`
+- tmuxp - https://github.com/tmux-python/tmuxp - `brew install tmuxp`
+- eza https://github.com/eza-community/eza - `mise use -g eza`
+- node - `mise use -g node`
+- tig https://jonas.github.io/tig/ - `brew install tig`
 
 ### Security
 
