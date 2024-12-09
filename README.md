@@ -37,6 +37,7 @@ Any scripts under the `misc_scripts` directory will be available on `$PATH`. See
 - eza https://github.com/eza-community/eza - `mise use -g eza`
 - node - `mise use -g node`
 - tig https://jonas.github.io/tig/ - `brew install tig`
+- jq https://jqlang.github.io/jq/ - `mise use -g jq`
 
 ### Security
 
