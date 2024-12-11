@@ -2,7 +2,16 @@
   name = Will Ockmore
   email = will.ockmore@gmail.com
 
+[gpg]
+  format = ssh
+
+[gpg "ssh"]
+  defaultKeyCommand = "ssh-add -L"
+
 [commit]
+  gpgsign = true
+
+[tag]
   gpgsign = true
 
 [pull]
