@@ -1,0 +1,104 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "assistant": {
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-3-5-sonnet-latest"
+    },
+    "version": "2"
+  },
+  "ui_font_size": 16,
+  "buffer_font_family": "Hack Nerd Font Mono",
+  "buffer_font_size": 12,
+  "theme": "Dracula",
+  "vim_mode": true,
+  // Disable cursor blink
+  "cursor_blink": false,
+  // Use relative line numbers
+  "relative_line_numbers": true,
+  // Hide the scroll bar
+  "scrollbar": { "show": "never" },
+  // Prevent the buffer from scrolling beyond the last line
+  "scroll_beyond_last_line": "off",
+  // Allow the cursor to reach the edges of the screen
+  "vertical_scroll_margin": 0,
+  // Indentation, rainbow indentation
+  "indent_guides": {
+    "enabled": true,
+    "coloring": "indent_aware"
+  },
+  "languages": {
+    // Refer https://zed.dev/docs/languages/javascript and https://zed.dev/docs/languages/typescript for more info
+    "TypeScript": {
+      // Refer https://github.com/jellydn/ts-inlay-hints for how to setup for Neovim and VSCode
+      "inlay_hints": {
+        "enabled": true,
+        "show_parameter_hints": false,
+        "show_other_hints": true,
+        "show_type_hints": true
+      }
+    },
+    "Python": {
+      "format_on_save": "on",
+      "formatter": "auto",
+      "language_servers": ["pyright", "ruff"]
+    }
+  },
+  // Inlay hints preconfigured by Zed: Go, Rust, Typescript and Svelte
+  "inlay_hints": {
+    "enabled": true
+  },
+  // File syntax highlighting
+  "file_types": {
+    "Dockerfile": ["Dockerfile", "Dockerfile.*"],
+    "JSON": ["json", "jsonc", "*.code-snippets"]
+  },
+  // Turn off telemetry
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+  // File scan exclusions, hide on the file explorer and search
+  "file_scan_exclusions": [
+    "**/.git",
+    "**/.svn",
+    "**/.hg",
+    "**/CVS",
+    "**/.DS_Store",
+    "**/Thumbs.db",
+    "**/.classpath",
+    "**/.settings",
+    // above is default from Zed
+    "**/out",
+    "**/dist",
+    "**/.husky",
+    "**/.turbo",
+    "**/.vscode-test",
+    "**/.vscode",
+    "**/.next",
+    "**/.storybook",
+    "**/.tap",
+    "**/.nyc_output",
+    "**/report",
+    "**/node_modules"
+  ], // Move some unnecessary panels to the left
+  "notification_panel": {
+    "dock": "left"
+  },
+  "chat_panel": {
+    "dock": "left"
+  },
+  "outline_panel": {
+    "dock": "right"
+  },
+  "collaboration_panel": {
+    "dock": "left"
+  }
+}
