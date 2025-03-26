@@ -82,3 +82,19 @@ abspath() {
 ,gb() {
     git checkout $(git branch --sort=-committerdate | fzf)
 }
+
+,gw() {
+    if [[ "$(git branch --show-current)" == "main" ]]; then
+        echo "ERROR: Cannot create WIP commit on main branch"
+        return 1
+    fi
+
+    if ! git diff --quiet || ! git diff --cached --quiet; then
+        git add -A
+        git commit -m "wip"
+    else
+        echo "No changes to commit"
+        return 1
+    fi
+}
+
